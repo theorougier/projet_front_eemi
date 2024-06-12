@@ -1,0 +1,85 @@
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1em;
+    width: 300px;
+    background-color: #ffffff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
+}
+
+  .recipe-card a {
+    text-decoration: none !important;
+    text-transform: none !important;
+    color: #333333;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .recipe-card h2 {
+    color: #e27d60;
+  }
+  
+  .recipe-card .ingredients,
+  .recipe-card .steps,
+  .recipe-card .time {
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  
+  .recipe-card p {
+    flex: 1; /* Allow text to grow and shrink */
+    overflow: hidden; /* Hide overflowing text */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    white-space: nowrap; /* Prevent breaking to new line */
+    margin-bottom: 0.5em;
+  }
+  
+  .recipe-card:hover {
+    transform: scale(1.02);
+  }
+  
+  .recipe-card img {
+    max-width: 100%;
+    border-radius: 8px;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .crud-button {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .edit-button, .delete-button {
+    color: #e27d60;
+    background: none;
+    border: none;
+    cursor: pointer;
+  }
+
+  .download-button {
+    background: #e27d60;
+    color: white;
+    border: none;
+    padding: 0.5em 1em;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 1em;
+    transition: background 0.2s;
+  }
+  
+  .download-button:hover {
+    background: #6dbbb5;
+  }
+
+  .difficulty div {
+    justify-content: center;
+  }

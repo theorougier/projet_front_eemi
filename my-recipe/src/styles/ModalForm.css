@@ -1,0 +1,92 @@
+.modal-content {
+  display: flex;
+  width: 100%;
+}
+
+.recipe-form-container {
+  flex: 1;
+  margin-right: 2em;
+}
+
+.recipe-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+input, textarea {
+  padding: 0.75em;
+  font-size: 1em;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+button[type="submit"], button[type="button"] {
+  padding: 0.75em 1.5em;
+  font-size: 1em;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button[type="submit"] {
+  background: #e27d60;
+  color: white;
+  border: none;
+}
+
+button[type="submit"]:hover {
+  background: #d66d50;
+}
+
+button[type="button"] {
+  background: #ccc;
+  color: #333;
+  border: none;
+}
+
+button[type="button"]:hover {
+  background: #bbb;
+}
+
+.recipe-preview-container {
+  flex: 1;
+  text-align: center;
+  overflow: auto;
+}
+
+.recipe-preview-container img {
+  max-width: 100%;
+  border-radius: 8px;
+  margin-bottom: 1em;
+}
+
+.recipe-preview-container h3 {
+  font-family: 'Merriweather', serif;
+  font-size: 1.5em;
+  color: #e27d60;
+}
+
+.recipe-preview-container p {
+  margin: 0.5em 0;
+}
+
+.difficulty-rating {
+  margin-top: 1em;
+}
+
+.difficulty-preview {
+  margin-top: 1em;
+  text-align: center;
+}
