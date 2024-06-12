@@ -3,5 +3,5 @@
   publish = "build"
 
 [context.production.environment]
-  NODE_VERSION = "14"
-  NPM_VERSION = "6"
+  NODE_VERSION = "18.17.0"
+  NPM_VERSION = "10.8.1"
