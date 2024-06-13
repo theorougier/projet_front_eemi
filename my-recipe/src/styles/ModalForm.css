@@ -76,7 +76,6 @@ button[type="button"]:hover {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  justify-content: center;
 }
 
 .recipe-preview-container img {

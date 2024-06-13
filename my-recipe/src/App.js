@@ -13,7 +13,7 @@ function App() {
         <header className="header-content">
           <h1>My Recipe.com</h1>
           <nav>
-            <Link to="/">Accueil</Link>
+            <Link to="/"></Link>
           </nav>
         </header>
         </div>

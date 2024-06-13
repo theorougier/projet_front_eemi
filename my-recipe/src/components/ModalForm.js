@@ -45,7 +45,7 @@ function ModalForm({ isOpen, onRequestClose, recipeIndex }) {
     if (recipeIndex !== null) {
       setRecipe(recipes[recipeIndex]);
     } else {
-      setRecipe({ name: '', ingredients: [], steps: [], time: '', image: '', difficulty: 0 });
+      setRecipe({ name: '', description: '', ingredients: [], steps: [], time: '', image: '', difficulty: 0 });
     }
   }, [recipeIndex, recipes]);
 
@@ -145,6 +145,14 @@ function ModalForm({ isOpen, onRequestClose, recipeIndex }) {
               onChange={handleChange}
               required
             />
+             <input
+              type="text"
+              name="description"
+              placeholder="Déscription de la recette"
+              value={recipe.description}
+              onChange={handleChange}
+              required
+            />
             <div className='custom-space-container'>
               <input
                 type="text"
@@ -241,6 +249,7 @@ function ModalForm({ isOpen, onRequestClose, recipeIndex }) {
         <div className="recipe-preview-container">
           {recipe.image && <img src={recipe.image} alt="Recipe Preview" />}
           <h3>{recipe.name}</h3>
+          <p><strong>Déscription:</strong> {recipe.description}</p>
           <p><strong>Ingrédients:</strong></p>
           <ul>
             {recipe.ingredients.map((ingredient, index) => (

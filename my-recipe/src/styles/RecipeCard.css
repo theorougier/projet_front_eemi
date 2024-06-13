@@ -34,9 +34,6 @@
   }
   
   .recipe-card p {
-    overflow: hidden; /* Hide overflowing text */
-    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
-    white-space: nowrap; /* Prevent breaking to new line */
     margin-bottom: 0;
   }
   

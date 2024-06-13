@@ -27,38 +27,38 @@ function RecipeCard({ recipe, index, onDelete, onEdit }) {
       y += 100 + sectionSpacing;
     }
 
-    // Ingredients
-    doc.setFontSize(14);
-    doc.text('Ingrédients:', 20, y);
-    y += 10;
-    doc.setFontSize(12);
-    const ingredientsLines = doc.splitTextToSize(recipe.ingredients, 160);
-    if (y + ingredientsLines.length * lineHeight > pageHeight) {
-      doc.addPage();
-      y = 20;
-    }
-    doc.text(ingredientsLines, 20, y);
-    y += ingredientsLines.length * lineHeight + sectionSpacing;
+     // Ingredients
+     doc.setFontSize(14);
+     doc.text('Ingrédients:', 20, y);
+     y += 10;
+     doc.setFontSize(12);
+     const ingredientsLines = doc.splitTextToSize(recipe.ingredients, 160);
+     if (y + ingredientsLines.length * lineHeight > pageHeight) {
+       doc.addPage();
+       y = 20;
+     }
+     doc.text(ingredientsLines, 20, y);
+     y += ingredientsLines.length * lineHeight + sectionSpacing;
 
-    // Steps
-    doc.setFontSize(14);
-    doc.text('Étapes:', 20, y);
-    y += 10;
-    doc.setFontSize(12);
-    const stepsLines = doc.splitTextToSize(recipe.steps, 160);
-    if (y + stepsLines.length * lineHeight > pageHeight) {
-      doc.addPage();
-      y = 20;
-    }
-    doc.text(stepsLines, 20, y);
-    y += stepsLines.length * lineHeight + sectionSpacing;
+     // Steps
+     doc.setFontSize(14);
+     doc.text('Étapes:', 20, y);
+     y += 10;
+     doc.setFontSize(12);
+     const stepsLines = doc.splitTextToSize(recipe.steps, 160);
+     if (y + stepsLines.length * lineHeight > pageHeight) {
+       doc.addPage();
+       y = 20;
+     }
+     doc.text(stepsLines, 20, y);
+     y += stepsLines.length * lineHeight + sectionSpacing;
 
-    // Time
-    doc.setFontSize(14);
-    doc.text('Temps:', 20, y);
-    y += 10;
-    doc.setFontSize(12);
-    doc.text(recipe.time, 20, y);
+     // Time
+     doc.setFontSize(14);
+     doc.text('Temps:', 20, y);
+     y += 10;
+     doc.setFontSize(12);
+     doc.text(recipe.time, 20, y);
 
     doc.save(`${recipe.name}.pdf`);
   };
@@ -68,8 +68,7 @@ function RecipeCard({ recipe, index, onDelete, onEdit }) {
       <Link to={`/recipe/${index}`} className="recipe-link">
         <h2>{recipe.name}</h2>
         {recipe.image && <img src={recipe.image} alt={recipe.name} />}
-        <p className="ingredients"><strong>Ingrédients:</strong> {recipe.ingredients}</p>
-        <p className="steps"><strong>Étapes:</strong> {recipe.steps}</p>
+        <p className="description"><strong>Description:</strong> {recipe.description}</p>
         <p className="time"><strong>Temps:</strong> {recipe.time}</p>
         <div className="difficulty">
           <strong>Difficulté:</strong>
