@@ -27,18 +27,17 @@
   .recipe-card .ingredients,
   .recipe-card .steps,
   .recipe-card .time {
-    flex: 1;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    height: 18px;
   }
   
   .recipe-card p {
-    flex: 1; /* Allow text to grow and shrink */
     overflow: hidden; /* Hide overflowing text */
     text-overflow: ellipsis; /* Add ellipsis for overflowing text */
     white-space: nowrap; /* Prevent breaking to new line */
-    margin-bottom: 0.5em;
+    margin-bottom: 0;
   }
   
   .recipe-card:hover {
@@ -82,4 +81,10 @@
 
   .difficulty div {
     justify-content: center;
+  }
+
+  .difficulty {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
   }

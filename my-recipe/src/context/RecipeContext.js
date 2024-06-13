@@ -3,13 +3,13 @@ import React, { createContext, useState, useEffect } from 'react';
 export const RecipeContext = createContext();
 
 export const RecipeProvider = ({ children }) => {
-  const [recipes, setRecipes] = useState([]);
+  const [recipes, setRecipesState] = useState([]);
 
   // Load recipes from localStorage when the component mounts
   useEffect(() => {
     const storedRecipes = localStorage.getItem('recipes');
     if (storedRecipes) {
-      setRecipes(JSON.parse(storedRecipes));
+      setRecipesState(JSON.parse(storedRecipes));
     }
   }, []);
 
@@ -19,20 +19,24 @@ export const RecipeProvider = ({ children }) => {
   }, [recipes]);
 
   const addRecipe = (recipe) => {
-    setRecipes([...recipes, recipe]);
+    setRecipesState([...recipes, recipe]);
   };
 
   const deleteRecipe = (index) => {
-    setRecipes(recipes.filter((_, i) => i !== index));
+    setRecipesState(recipes.filter((_, i) => i !== index));
   };
 
   const editRecipe = (index, newRecipe) => {
     const updatedRecipes = recipes.map((recipe, i) => (i === index ? newRecipe : recipe));
-    setRecipes(updatedRecipes);
+    setRecipesState(updatedRecipes);
+  };
+
+  const setRecipes = (newRecipes) => {
+    setRecipesState(newRecipes);
   };
 
   return (
-    <RecipeContext.Provider value={{ recipes, addRecipe, deleteRecipe, editRecipe }}>
+    <RecipeContext.Provider value={{ recipes, addRecipe, deleteRecipe, editRecipe, setRecipes }}>
       {children}
     </RecipeContext.Provider>
   );

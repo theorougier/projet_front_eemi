@@ -9,12 +9,14 @@ function App() {
   return (
     <Router>
       <div className="App">
-        <header>
+        <div className='bandeau-header'>
+        <header className="header-content">
           <h1>My Recipe.com</h1>
           <nav>
             <Link to="/">Accueil</Link>
           </nav>
         </header>
+        </div>
         <main>
           <Routes>
             <Route path="/" element={<HomePage />} />

@@ -3,9 +3,12 @@ import { RecipeContext } from '../context/RecipeContext';
 import RecipeList from './RecipeList';
 import ModalForm from './ModalForm';
 import jsPDF from 'jspdf';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faFileDownload, faSave, faUpload, faPlus } from '@fortawesome/free-solid-svg-icons';
+import '../styles/HomePage.css';
 
 function HomePage() {
-  const { recipes, addRecipe, deleteRecipe, editRecipe } = useContext(RecipeContext);
+  const { recipes, addRecipe, deleteRecipe, editRecipe, setRecipes } = useContext(RecipeContext);
   const [modalIsOpen, setModalIsOpen] = useState(false);
   const [currentRecipeIndex, setCurrentRecipeIndex] = useState(null);
 
@@ -87,19 +90,59 @@ function HomePage() {
     doc.save('recipe_book.pdf');
   };
 
+  const downloadLocalStorage = () => {
+    const data = JSON.stringify(recipes);
+    const blob = new Blob([data], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'recipes.json';
+    a.click();
+  };
+
+  const handleFileUpload = (event) => {
+    const file = event.target.files[0];
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const data = JSON.parse(e.target.result);
+      setRecipes(data);
+    };
+    reader.readAsText(file);
+  };
+
   return (
     <div className="home-page">
       {recipes.length === 0 ? (
         <div className="no-recipes">
           <h2>Pas de recette disponible</h2>
           <p>Pourquoi ne pas créer une nouvelle recette?</p>
-          <button onClick={openModal} className="button">Ajouter une recette</button>
+          <button onClick={openModal} className="button">
+            <FontAwesomeIcon icon={faPlus} />
+            Ajouter une recette
+          </button>
+          <div className="file-input-container">
+            <p><strong>Importez vos recettes</strong></p>
+            <input type="file" accept="application/json" onChange={handleFileUpload} />
+          </div>
         </div>
       ) : (
         <>
           <h2>Vos recettes</h2>
           <RecipeList openModal={openModal} onEdit={handleEdit} onDelete={handleDelete} />
-          <button onClick={downloadRecipeBook} className="button">Téléchargez votre livre de recettes</button>
+          <div className="buttons-container">
+            <button onClick={downloadRecipeBook} className="button">
+              <FontAwesomeIcon icon={faFileDownload} />
+              Téléchargez votre livre de recettes
+            </button>
+            <button onClick={downloadLocalStorage} className="button">
+              <FontAwesomeIcon icon={faSave} />
+              Sauvegarder vos recettes
+            </button>
+            <div className="file-input-container">
+              <p><strong>Importez vos recettes</strong></p>
+              <input type="file" accept="application/json" onChange={handleFileUpload} />
+            </div>
+          </div>
         </>
       )}
       <ModalForm isOpen={modalIsOpen} onRequestClose={closeModal} recipeIndex={currentRecipeIndex} />
